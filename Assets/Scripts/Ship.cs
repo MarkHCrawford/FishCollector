@@ -4,31 +4,35 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
-    //fish count
-    int currentFish = 0;
-
+    // fishes collected
+    private int fishesCaptured = 0;
+    
     // current fish target
     GameObject targetFish;
 
     // reference to fish collector class
-    public FishCollector fishcollector;
+    private FishCollector fishcollector;
 
     // movement direction
-    public Vector2 Direction;
+    private Vector2 Direction;
 
     // rb2d
-    public Rigidbody2D rd;
+    private Rigidbody2D rd;
 
     // speed
-    public float speed = 2.0f;
+    private float speed = 2.0f;
 
+
+    // start
+    private bool StartMove = false;
 
     // Start is called before the first frame update
     void Start()
     {
         // get the fish collector component
-        fishcollector = gameObject.GetComponent<FishCollector>();
+        fishcollector = Camera.main.GetComponent<FishCollector>();
         rd = GetComponent<Rigidbody2D>();
+
 
     }
 
@@ -36,57 +40,54 @@ public class Ship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        while (fishcollector.fishList.Count != 0)
+        if (StartMove)
         {
-            // get the first fish in the list
-            targetFish = fishcollector.fishList[currentFish];
-
-            // get the direction to move
-            Direction = new Vector2(targetFish.transform.position.x - transform.position.x,
-                targetFish.transform.position.y - transform.position.y);
-
-            // normalize the direction
-            Direction.Normalize();
-
-            // move the ship
-            GetNextFish();
+            targetFish = fishcollector.CopyFish();
+            MoveTowardFish();
         }
     }
 
 
 
+    // click on ship and begin moving
     private void OnMouseDown()
     {
-        if(fishcollector.fishList.Count != 0)
-        {
-            rd.AddForce(Direction * speed, ForceMode2D.Force);  
-
-        }
-
+        // startmoving
+        StartMove = true;
     }
 
     
-    public void OnTriggerStay2D(Collider2D collision)
+    // remove if on top of fish
+    private void OnTriggerStay2D(Collider2D collision)
     {
        if (collision.gameObject == targetFish)
         {
-
-            // reset ship movement
-            rd.velocity = Vector2.zero;
-
-            // destroy the fish
-            Destroy(targetFish);
-            fishcollector.fishList.Remove(targetFish);
-            currentFish++;
+            fishcollector.RemoveFish();
+            fishesCaptured++;
         }
     }
 
 
-
-    // get next fish
-    public void GetNextFish()
+    // movement towards fish
+    private void MoveTowardFish()
     {
-        rd.AddForce(Direction * speed, ForceMode2D.Impulse);
+        if (targetFish != null && fishesCaptured < fishcollector.GetFishCount())
+        { 
+            Direction = (targetFish.transform.position - transform.position).normalized;
+            rd.velocity = new Vector2(Direction.x * speed, Direction.y * speed);
+        }
+        else
+        {
+            rd.velocity = Vector2.zero;
+            StartMove = false;
+            if (fishesCaptured < fishcollector.GetFishCount())
+            {
+              fishcollector.GetNextFish();
+              StartMove = true;
+            }
+        }
+        
     }
+
 
 }

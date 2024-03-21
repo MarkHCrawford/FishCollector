@@ -229,7 +229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fish: {fileID: 8619305822967026323, guid: 21439234db244db4093f0236cc446674, type: 3}
-  fishList: []
 --- !u!1001 &926463792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -283,7 +282,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 7474472141166654081, guid: 4e769d5e5827f2b409463adb6610eb93, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

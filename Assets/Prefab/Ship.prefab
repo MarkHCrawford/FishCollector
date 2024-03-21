@@ -433,7 +433,6 @@ GameObject:
   - component: {fileID: -1162859810470540462}
   - component: {fileID: -3636170314337224173}
   - component: {fileID: 6414565171041801716}
-  - component: {fileID: 7474472141166654081}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -589,25 +588,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6544a0e271a10b941aa8e8f25478c196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetFish: {fileID: 0}
   fishcollector: {fileID: 0}
   Direction: {x: 0, y: 0}
   rd: {fileID: 0}
   speed: 2
---- !u!114 &7474472141166654081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5460401253711399396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f18b94326acbee6469d9253f6935415a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fishList: []
-  Fish: {fileID: 8619305822967026323, guid: 21439234db244db4093f0236cc446674, type: 3}
 --- !u!1 &5950611643135608591
 GameObject:
   m_ObjectHideFlags: 0

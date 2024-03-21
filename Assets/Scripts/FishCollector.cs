@@ -4,51 +4,81 @@ using UnityEngine;
 
 public class FishCollector : MonoBehaviour
 {
-    public GameObject Fish;
+    [SerializeField]
+    private GameObject Fish;
     private int currentFish = 0;
     private List<GameObject> fishList = new List<GameObject>();
+
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-    
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = -Camera.main.transform.position.z;
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            GameObject newfish = Instantiate<GameObject>(Fish);
-            newfish.transform.position = worldPosition;
-            fishList.Add(newfish);
-        }
+        PlaceFish();
+    }
+
+
+    // get fish count
+    public int GetFishCount()
+    {
+        return fishList.Count;
     }
 
 
     //Destroy current fish
     public void RemoveFish()
     {
-        if (currentFish < fishList.Count - 1)
+        if (currentFish < fishList.Count)
         {
             Destroy(fishList[currentFish]);
-            fishList.RemoveAt(currentFish);
+            GetNextFish();
         }
     }
 
     // Get next fish
     public void GetNextFish()
     {
-        if (currentFish < fishList.Count - 1)
+        if (currentFish < fishList.Count)
         {
             currentFish++;
         }
     }
 
+
+    // Send fish to ship for location
+    public GameObject CopyFish()
+    {
+        if (currentFish < fishList.Count)
+        {
+            return fishList[currentFish];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+
+
+    // Place fish on right click
+    private void PlaceFish()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = -Camera.main.transform.position.z;
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            GameObject newfish = Instantiate(Fish);
+            newfish.transform.position = worldPosition;
+            fishList.Add(newfish);
+        }
+    }
 
 }
