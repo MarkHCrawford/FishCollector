@@ -1,13 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
+
+/*************************/
+/* Mark Crawford         */
+/* CSC350H               */
+/* Professor Tang        */
+/* 03/28/2024            */
+/* FishCollector.cs      */
+/*************************/
+
 
 public class FishCollector : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject Fish;
+    // Fish types
+    [SerializeField] private GameObject RegularFish;
+    [SerializeField] private GameObject ExplosionFish;
+    [SerializeField] private GameObject BurningFish;
+
+    // counter for current fish
     private int currentFish = 0;
     private List<GameObject> fishList = new List<GameObject>();
+
+
+    // Score Counter
+    private int score = 0;
+
+
+    
 
 
 
@@ -15,6 +37,9 @@ public class FishCollector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RegularFish = GameObject.Find("FishReg");
+        ExplosionFish = GameObject.Find("ExplodingFish");
+        BurningFish = GameObject.Find("BurningFish");
     }
 
 
@@ -37,7 +62,8 @@ public class FishCollector : MonoBehaviour
     {
         if (currentFish < fishList.Count)
         {
-            Destroy(fishList[currentFish]);
+            fishList[currentFish].GetComponent<Fish>().DestroyFish();
+            score += fishList[currentFish].GetComponent<Fish>().PointValue;
             GetNextFish();
         }
     }
@@ -75,10 +101,33 @@ public class FishCollector : MonoBehaviour
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = -Camera.main.transform.position.z;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            GameObject newfish = Instantiate(Fish);
+
+            //get random fish
+            GameObject newfish = Instantiate(RandomFish());
+
+            // set location
             newfish.transform.position = worldPosition;
+
+            // add to list
             fishList.Add(newfish);
         }
     }
 
+
+    // Return specific fish
+    public GameObject RandomFish()
+    {
+        switch (Random.Range(0,3))
+        {
+            case 0:
+                return RegularFish;
+            case 1:
+                return ExplosionFish;
+            case 2:
+                return BurningFish;
+            default:
+                return RegularFish;
+        }
+
+    }
 }

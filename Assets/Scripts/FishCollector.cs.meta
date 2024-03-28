@@ -3,7 +3,10 @@ guid: f18b94326acbee6469d9253f6935415a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - RegularFish: {fileID: 8619305822967026323, guid: 21439234db244db4093f0236cc446674, type: 3}
+  - ExplosionFish: {fileID: 1128525086333922123, guid: d7193df13763b5e4589187fa3f05c231, type: 3}
+  - BurningFish: {fileID: 7699059313696800784, guid: a4fdd934b8c04b942b2ac95ad887d7ea, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

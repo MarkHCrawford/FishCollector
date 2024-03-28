@@ -228,7 +228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18b94326acbee6469d9253f6935415a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fish: {fileID: 8619305822967026323, guid: 21439234db244db4093f0236cc446674, type: 3}
+  RegularFish: {fileID: 8619305822967026323, guid: 21439234db244db4093f0236cc446674, type: 3}
+  ExplosionFish: {fileID: 1128525086333922123, guid: d7193df13763b5e4589187fa3f05c231, type: 3}
+  BurningFish: {fileID: 7699059313696800784, guid: a4fdd934b8c04b942b2ac95ad887d7ea, type: 3}
 --- !u!1001 &926463792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -240,6 +242,10 @@ PrefabInstance:
     - target: {fileID: 5460401253711399396, guid: 4e769d5e5827f2b409463adb6610eb93, type: 3}
       propertyPath: m_Name
       value: Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460401253711399396, guid: 4e769d5e5827f2b409463adb6610eb93, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7365032880520596880, guid: 4e769d5e5827f2b409463adb6610eb93, type: 3}
       propertyPath: m_LocalPosition.x
