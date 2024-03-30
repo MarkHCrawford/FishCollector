@@ -14,14 +14,20 @@ using UnityEngine;
 /*************************/
 
 
-public class BurningFish : Fish
+public class FireScript : Fish
 {
+    // point value
     private int pointValue = 5;
-    private GameObject FireFish;
-    private GameObject Burning;
+
+    // prefabs to attach
+    [SerializeField] private GameObject FireFish;
+    [SerializeField] private GameObject Burning;
+
+    // temp objects
+    private GameObject newflame;
 
     // Timer for burning
-    private float burnTime = 5.0f;
+    private float burnTime = 3.0f;
     private bool isBurning = false;
 
 
@@ -32,13 +38,8 @@ public class BurningFish : Fish
     }
 
 
-    // on start
-    private void Start()
-    {
-        FireFish = GameObject.Find("BurningFish");
-        Burning = GameObject.Find("Fire");
-    }
-    
+
+
 
     // Update
     private void Update()
@@ -48,26 +49,22 @@ public class BurningFish : Fish
             burnTime -= Time.deltaTime;
             if (burnTime <= 0)
             {
-                Destroy(FireFish);
-                Destroy(Burning);
+                Destroy(newflame);
+                isBurning = false;
             }
         }
     }
 
 
     // Destroy fish
-    public override void DestroyFish()
+    public override int DestroyFish(GameObject fishdestroy)
     {
-        Instantiate(Burning);
-        Burning.transform.position = FireFish.transform.position;
-        StartBurning();
-    }
-
-
-    // Start burning
-    public void StartBurning()
-    {
-        isBurning = true;
+        newflame = Instantiate(Burning);
+        newflame.transform.position = fishdestroy.transform.position;
+        Destroy(fishdestroy);
+        Destroy(newflame, 3.0f);
+        return pointValue;
     }
 
 }
+

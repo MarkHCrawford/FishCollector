@@ -16,11 +16,13 @@ using UnityEngine;
 
 
 
-public class ExplosionFish : Fish
+public class ExplosionScript : Fish
 {
 
-    private GameObject ExplodeFish;
-    private GameObject ExplosionObj;
+    [SerializeField] private GameObject ExplodeFish;
+    [SerializeField] private GameObject ExplosionObj;
+
+    GameObject newExplosion;
 
     private int pointValue = 3;
      
@@ -32,23 +34,17 @@ public class ExplosionFish : Fish
 
     private void Start()
     {
-        ExplodeFish = GameObject.Find("ExplodingFish");
-        ExplosionObj = GameObject.Find("Explosion");
+
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-       if (collision.gameObject.tag == "Player")
-        {
-            Instantiate(ExplosionObj);
-            ExplosionObj.transform.position = ExplodeFish.transform.position;
-        }
-    }
 
-    public override void DestroyFish()
+    public override int DestroyFish(GameObject fishtodestroy)
     {
-        Destroy(ExplodeFish);
+        newExplosion = Instantiate(ExplosionObj);
+        newExplosion.transform.position = fishtodestroy.transform.position;
+        Destroy(fishtodestroy);
+        return pointValue;
     }
 
 

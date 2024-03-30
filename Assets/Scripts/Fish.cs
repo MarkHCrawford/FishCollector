@@ -20,7 +20,6 @@ public abstract class Fish : MonoBehaviour
     public abstract int PointValue { get; }
 
 
-    public abstract void DestroyFish();
-
+    public abstract int DestroyFish(GameObject fishtodestroy);
 
 }

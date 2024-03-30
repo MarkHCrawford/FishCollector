@@ -25,15 +25,15 @@ public class RegularFish : Fish
 
     // Start is called before the first frame update
     void Start()
-    {
-        RegFish = GameObject.Find("Fish");   
+    {  
     }
 
 
     // Destroying fish
-    public override void DestroyFish()
+    public override int DestroyFish(GameObject fishtodestroy)
     {
-        Destroy(RegFish);
+        Destroy(fishtodestroy);
+        return pointValue;
     }
 
 }

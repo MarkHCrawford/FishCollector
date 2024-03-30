@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 3372117500079688818}
   - component: {fileID: 2108258640456818785}
   - component: {fileID: -6487873802110412895}
+  - component: {fileID: -3612948017714079935}
   m_Layer: 0
   m_Name: FishReg
   m_TagString: Untagged
@@ -375,3 +376,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-3612948017714079935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619305822967026323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c4dc98856b5514f92cc422c2c424f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RegFish: {fileID: 8619305822967026323}

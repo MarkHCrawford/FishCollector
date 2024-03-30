@@ -31,18 +31,6 @@ public class FishCollector : MonoBehaviour
 
     
 
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        RegularFish = GameObject.Find("FishReg");
-        ExplosionFish = GameObject.Find("ExplodingFish");
-        BurningFish = GameObject.Find("BurningFish");
-    }
-
-
     // Update is called once per frame
     void Update()
     {
@@ -62,8 +50,7 @@ public class FishCollector : MonoBehaviour
     {
         if (currentFish < fishList.Count)
         {
-            fishList[currentFish].GetComponent<Fish>().DestroyFish();
-            score += fishList[currentFish].GetComponent<Fish>().PointValue;
+            score += fishList[currentFish].GetComponent<Fish>().DestroyFish(fishList[currentFish]);
             GetNextFish();
         }
     }
