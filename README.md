@@ -29,12 +29,13 @@ ___
 | Burning Fish | Fish burns upon destruction | 03/28 |
 | Exploding Fish | Fish explodes upon destruction | 03/28 |
 | Finalizing Ship Logic | Correct animations play, objects are destroyed | 03/29 |
+| Canvas and UI | Each fish score value updates when removed on UI | 04/04/2024 |
 
 
 - [x] Fish inheritance hierarchy
 - [x] Ship goes to objects in order
 - [x] Score is calculated
-- [ ] Different appearance for different fish
-- [ ] Score UI element
+- [x] Different appearance for different fish
+- [x] Score UI element
 
-*Youtube:* [YouTube Video](https://youtu.be/--MXz84sQZo)
+*Youtube:* [YouTube Video](https://youtu.be/--MXz84sQZo)  **Needs Updating as of 04/04/2024**
