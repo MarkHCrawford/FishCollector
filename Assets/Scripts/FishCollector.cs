@@ -29,7 +29,15 @@ public class FishCollector : MonoBehaviour
     private int score = 0;
 
 
-    
+    // Score UI
+    HUD playerScore;
+
+
+    private void Start()
+    {
+        playerScore = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>(); 
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -50,7 +58,8 @@ public class FishCollector : MonoBehaviour
     {
         if (currentFish < fishList.Count)
         {
-            score += fishList[currentFish].GetComponent<Fish>().DestroyFish(fishList[currentFish]);
+            score = fishList[currentFish].GetComponent<Fish>().DestroyFish(fishList[currentFish]);
+            playerScore.AddPoints(score);
             GetNextFish();
         }
     }
