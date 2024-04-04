@@ -19,11 +19,13 @@ Exploding Fish,
 Burning Fish.
 Need to fix issue with deleting objects.
 
-
+**Updated: 04/04/2024**
+Finished UI score element.
 
 ___
 
 **Updated: 03/29/2024**
+**Updated: 04/04/2024**
 | Feature | Description | Date |
 | :--- | :--- | :--- |
 | Burning Fish | Fish burns upon destruction | 03/28 |
